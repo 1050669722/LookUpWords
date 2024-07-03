@@ -8,8 +8,9 @@ import re
 from typing import List
 
 
-def ensure_english_letters(s):
-    return re.sub(r'[^a-zA-Z]', '', s)
+def is_english_with_spaces(s):
+    # 正则表达式允许空格，并且只匹配英文字母
+    return re.match('^[A-Za-z\s]+$', s) is not None
 
 
 def lookUpWord():
@@ -21,7 +22,7 @@ def lookUpWord():
         return
 
     # 检查字符串是否全由英文字母组成
-    if not ensure_english_letters(text):
+    if not is_english_with_spaces(text):
         return
 
     # 查询单词
